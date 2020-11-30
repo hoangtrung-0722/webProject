@@ -1,7 +1,7 @@
 const bookModel = require('../models/bookModel');
 
-module.exports.index = (req, res, next) => {
-    const book = bookModel.list();
+module.exports.index = async (req, res, next) => {
+    const book = await bookModel.list();
     res.render('index', {book});
 };
 
