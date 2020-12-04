@@ -8,5 +8,7 @@ module.exports.index = async (req, res, next) =>{
 };
 
 module.exports.detail = async (req, res) =>{
-    res.render('book_detail', await bookModel.get(req.params.id));
+    console.log(req.params.id);
+    const book = await bookModel.get(req.params.id);
+    res.render('book_detail', {title: book.title, book});
 };

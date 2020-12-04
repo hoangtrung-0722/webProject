@@ -40,7 +40,7 @@
 					<div class="col-md-4 col-sm-4 col-7 col-lg-2">
 						<div class="logo">
 							<a href="/index">
-								<img src="../assets/images/logo/logo.png" alt="logo images">
+								<img src="../../assets/images/logo/logo.png" alt="logo images">
 							</a>
 						</div>
 					</div>
@@ -236,15 +236,14 @@
         						<div class="col-lg-6 col-12">
         							<div class="wn__fotorama__wrapper">
 	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs">
-		        							  <a href="1.jpg"><img src="../assets/images/product/harrypotter1.jpg" alt=""></a>
-		        							  <a href="2.jpg"><img src="../assets/images/product/harrypotter2.jpg" alt=""></a>
-		        	
+		        							  <a href="{{book.coverFirst}}"><img src="{{book.coverFirst}}" alt=""></a>
+		        							  <a href="{{book.coverSecond}}"><img src="{{book.coverSecond}}" alt=""></a>
 	        							</div>
         							</div>
         						</div>
         						<div class="col-lg-6 col-12">
         							<div class="product__info__main">
-        								<h1>Chaz Kangeroo Hoodie</h1>
+        								<h1>{{book.title}}</h1>
         								<div class="product-reviews-summary d-flex">
         									<ul class="rating-summary d-flex">
     											<li><i class="zmdi zmdi-star-outline"></i></li>
@@ -255,11 +254,11 @@
         									</ul>
         								</div>
         								<div class="price-box">
-        									<span>$52.00</span>
+        									<span>{{book.price}}</span>
         								</div>
 										<div class="product__overview">
         									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.</p>
-        									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. </p>
+        									<p>Data for this file is not available. </p>
         								</div>
         								<div class="box-tocart d-flex">
         									<span>Qty</span>
