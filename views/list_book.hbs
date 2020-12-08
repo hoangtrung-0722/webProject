@@ -346,8 +346,8 @@
 	        						<!-- Start Single Product -->
 		        					<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
 			        					<div class="product__thumb">
-											<a class="first__img" href="books/book_detail"><img src="{{coverFirst}}" alt="product image"></a>
-											<a class="second__img animation1" href="books/book_detail"><img src="{{coverSecond}}" alt="product image"></a>
+											<a class="first__img" href="books/book_detail/{{_id}}"><img src="{{coverFirst}}" alt="product image"></a>
+											<a class="second__img animation1" href="books/book_detail/{{_id}}"><img src="{{coverSecond}}" alt="product image"></a>
 											<div class="hot__box">
 												<span class="hot-label">{{hotLabel}}</span>
 											</div>
@@ -389,7 +389,7 @@
 	        						<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
 	        					</ul>
 	        				</div>
-	        				<div class="list_book tab-pane fade" id="nav-list" role="tabpanel">
+	        				{{!-- <div class="list_book tab-pane fade" id="nav-list" role="tabpanel">
 	        					<div class="list__view__wrapper">
 	        						<!-- Start Single Product -->
 	        						<div class="list__view">
@@ -541,7 +541,7 @@
 	        						</div>
 	        						<!-- End Single Product -->
 	        					</div>
-	        				</div>
+	        				</div> --}}
         				</div>
         			</div>
         		</div>
