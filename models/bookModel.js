@@ -38,3 +38,20 @@ exports.getPage = async (page) => {
         totalPage: total
     };
 }
+
+exports.search = async (q, page) => {
+    const pageNum = parseInt(page);
+    const total = await totalPage({});
+    const booksCollection = db().collection('books');
+    const books =  await booksCollection.find({title: q})
+                                        .skip(itemPerPage * (pageNum - 1))
+                                        .limit(itemPerPage)
+                                        .toArray();
+    return {
+        list: books,
+        prevPage: pageNum > 1 ? pageNum - 1 : undefined,
+        currentPage: pageNum,
+        nextPage: pageNum < total ? pageNum + 1 : undefined,
+        totalPage: total
+    };
+}
