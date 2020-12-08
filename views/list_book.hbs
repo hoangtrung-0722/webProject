@@ -48,7 +48,7 @@
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
 								<li class="drop with--one--item"><a href="index">Home</a></li>
-								<li class="drop"><a href="#">Books</a>
+								<li class="drop"><a href="books/1">Books</a>
 									<div class="megamenu mega03">
 										<ul class="item item03">
 											<li class="title">Categories</li>
@@ -382,11 +382,23 @@
 									{{/each}}
 	        					</div>
 	        					<ul class="wn__pagination">
-	        						<li class="active"><a href="#">1</a></li>
-	        						<li><a href="#">2</a></li>
-	        						<li><a href="#">3</a></li>
-	        						<li><a href="#">4</a></li>
-	        						<li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+									{{#if prevPage}}
+	        						<li><a href="{{prevPage}}"><i class="zmdi zmdi-chevron-left"></i></a></li>
+									{{/if}}
+
+									{{#if prevPage}}
+									<li><a href="{{prevPage}}">{{prevPage}}</a></li>
+									{{/if}}
+
+	        						<li class="active"><a href="{{currentPage}}">{{currentPage}}</a></li>
+
+									{{#if nextPage}}
+	        						<li><a href="{{nextPage}}">{{nextPage}}</a></li>
+									{{/if}}
+
+									{{#if nextPage}}
+	        						<li><a href="{{nextPage}}"><i class="zmdi zmdi-chevron-right"></i></a></li>
+									{{/if}}
 	        					</ul>
 	        				</div>
 	        				{{!-- <div class="list_book tab-pane fade" id="nav-list" role="tabpanel">
