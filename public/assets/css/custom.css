@@ -1,8 +1,8 @@
-/*********************************************************************************
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 
-	Template Name: Boighor Bookshop Responsive Bootstrap4 Template  
-	Description: Template description
-	Version: 1.0
-	Note: This is custom css. All custom styles (user styles) declare here.
-
-**********************************************************************************/
+a {
+  color: #00B7FF;
+}

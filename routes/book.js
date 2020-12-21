@@ -1,14 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
-const bookController = require('../controllers/bookController');
+const indexController = require('../controllers/indexController');
+const booksController = require('../controllers/bookController');
 
-router.get('/', bookController.index);
+//GET home page
+router.get('/index', indexController.index);
+//GET products page
+router.get('/products', booksController.products);
 
-router.get('/books', bookController.index);
+//router.get('/:page', bookController.index);
 
-router.get('/:page', bookController.index);
-
-router.get('/book_detail/:id', bookController.detail);
+router.get('/products/detail/:id', booksController.detail);
 
 module.exports = router;

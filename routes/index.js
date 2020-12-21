@@ -2,11 +2,16 @@ const express = require('express');
 const router = express.Router();
 
 const indexController = require('../controllers/indexController');
+const booksController = require('../controllers/bookController');
 
 /* GET home page. */
 router.get('/', indexController.index);
 router.get('/index', indexController.index);
-router.get('/login', indexController.login);
-router.get('/register', indexController.register);
+
+router.get('/products', booksController.products);
+
+router.get('/products/detail/:id', booksController.detail);
+//router.get('/login', indexController.login);
+//router.get('/register', indexController.register);
 
 module.exports = router;
