@@ -1,10 +1,27 @@
+const { paginate } = require('../models/bookSchema');
+const bookSchema = require('../models/bookSchema');
 const bookService = require('../models/services/bookService');
+
+const BOOKS_PER_PAGE = 16;
 
 module.exports.products = async (req, res, next) => {
     const listRecommended = await bookService.get_recommended();
+
+    const page = +req.query.page || 1;
+
+    const paginate = await bookService.list(page, BOOKS_PER_PAGE);
+
     res.render('products', {
         title: 'List of Products',
-        recommendedBook: listRecommended
+        recommendedBook: listRecommended,
+        book: paginate.docs,
+        hasNextPage: paginate.hasNextPage,
+        hasPrevPage: paginate.hasPrevPage,
+        page: paginate.page,
+        nextPage: paginate.nextPage,
+        prevPage: paginate.prevPage,
+        
+        
     });
 }
 
