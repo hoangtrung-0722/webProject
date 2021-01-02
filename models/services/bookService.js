@@ -1,5 +1,6 @@
 const BookModel = require('../bookSchema');
-const ObjectId = require('mongodb').ObjectID;
+const mongoose = require('mongoose');
+
 
 exports.list = async () => {
     const books = await BookModel.find({});
@@ -7,12 +8,11 @@ exports.list = async () => {
 }
 
 exports.get = async (id) => {
-    const book = await BookModel.findOne({ _id: ObjectId(id) });
+    const book = await BookModel.findOne({ _id: new mongoose.Types.ObjectId(id)});
     return book;
 }
 
 exports.get_recommended = async () => {
     const books = await BookModel.find({}).limit(4);
-    console.log(books);
     return books;
 }

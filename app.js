@@ -1,11 +1,16 @@
+require('dotenv').config();
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv').config();
+const mongooseDB = require('./dal/database');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const passport = require('passport');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -19,24 +24,41 @@ hbs.registerPartials(path.join(__dirname, 'views', 'partials'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+//app.use(logger('dev'));
+// app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+require('./passport/passport');
+app.use(session({
+  secret: 'holywakamoly',
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({ url: process.env.DB_URI })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+//routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
 app.use('/', authRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
