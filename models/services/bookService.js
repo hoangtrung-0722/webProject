@@ -2,7 +2,7 @@ const BookModel = require('../bookSchema');
 const ObjectId = require('mongodb').ObjectID;
 
 exports.list = async (pageNum, booksPerPage) => {
-    let books = await BookModel.paginate({}, {
+    const books = await BookModel.paginate({}, {
         page: pageNum,
         limit: booksPerPage
     });
@@ -19,3 +19,9 @@ exports.get_recommended = async () => {
     const books = await BookModel.find({}).limit(4);
     return books;
 }
+
+exports.sort_price = async (sort) => {
+    const books = await BookModel.find({}).sort({price: sort});
+    return books;
+}
+

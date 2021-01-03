@@ -1,4 +1,3 @@
-const { paginate } = require('../models/bookSchema');
 const bookSchema = require('../models/bookSchema');
 const bookService = require('../models/services/bookService');
 
@@ -8,6 +7,8 @@ module.exports.products = async (req, res, next) => {
     const listRecommended = await bookService.get_recommended();
 
     const page = +req.query.page || 1;
+
+    const list_sort = await bookService.sort_price(sort);
 
     const paginate = await bookService.list(page, BOOKS_PER_PAGE);
 
@@ -20,7 +21,6 @@ module.exports.products = async (req, res, next) => {
         page: paginate.page,
         nextPage: paginate.nextPage,
         prevPage: paginate.prevPage,
-        
         
     });
 }
