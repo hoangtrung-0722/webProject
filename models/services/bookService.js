@@ -1,5 +1,6 @@
 const BookModel = require('../bookSchema');
-const ObjectId = require('mongodb').ObjectID;
+const mongoose = require('mongoose');
+
 
 exports.list = async (pageNum, booksPerPage) => {
     const books = await BookModel.paginate({}, {
@@ -11,7 +12,7 @@ exports.list = async (pageNum, booksPerPage) => {
 }
 
 exports.get = async (id) => {
-    const book = await BookModel.findOne({ _id: ObjectId(id) });
+    const book = await BookModel.findOne({ _id: new mongoose.Types.ObjectId(id)});
     return book;
 }
 

@@ -11,7 +11,5 @@ router.get('/index', indexController.index);
 router.get('/products', booksController.products);
 
 router.get('/products/detail/:id', booksController.detail);
-//router.get('/login', indexController.login);
-//router.get('/register', indexController.register);
 
 module.exports = router;
