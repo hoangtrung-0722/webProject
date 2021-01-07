@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 
 exports.list = async (pageNum, booksPerPage) => {
-    const books = await BookModel.paginate({}, {
+    let books = await BookModel.paginate({}, {
         page: pageNum,
         limit: booksPerPage
     });
@@ -11,9 +11,9 @@ exports.list = async (pageNum, booksPerPage) => {
 }
 
 exports.sort_list = async (pageNum, booksPerPage, sort_value) => {
-    const books = await BookModel.paginate({}, {
+    let books = await BookModel.paginate({}, {
         sort: {
-            price: 0
+            price: sort_value
         },
         page: pageNum,
         limit: booksPerPage
@@ -27,13 +27,7 @@ exports.get = async (id) => {
     return book;
 }
 
-exports.get_recommended = async () => {
-    const books = await BookModel.find({}).limit(4);
+exports.get_recommended = async (books_per_page) => {
+    const books = await BookModel.find({}).limit(books_per_page);
     return books;
 }
-
-exports.sort_price = async (sort) => {
-    const books = await BookModel.find({}).sort({price: sort});
-    return books;
-}
-

@@ -12,7 +12,9 @@ module.exports.products = async (req, res, next) => {
     
     if(sort_value)
         paginate = await bookService.sort_list(page, BOOKS_PER_PAGE, sort_value); 
-        
+    
+    const book = paginate.docs;
+
     res.render('products', {
         title: 'List of Products',
         book: paginate.docs,

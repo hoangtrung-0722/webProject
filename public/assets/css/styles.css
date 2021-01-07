@@ -39,7 +39,7 @@ textarea {
   outline: 0; }
 
 .btn {
-  background: #ff9700;
+  background: #913f9e;
   opacity: 1;
   color: #fff;
   text-transform: uppercase;
@@ -47,11 +47,11 @@ textarea {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.4px;
-  border: 2px solid #ff9700;
+  border: 2px solid #913f9e;
   border-radius: 2px; }
   .btn:hover {
     background: #fff;
-    color: #ff9700; }
+    color: #913f9e; }
 
 .container {
   width: 1200px;
@@ -215,7 +215,7 @@ header .cart {
     border-radius: 50%;
     margin: 0 5px; }
     .slider button.owl-dot.active {
-      background: #ff9700; }
+      background: #913f9e; }
 
 .recommended-sec {
   text-align: center;
@@ -236,6 +236,9 @@ header .cart {
   .recommended-sec .title {
     margin-bottom: 70px; }
   .recommended-sec .item {
+    width: 200px;
+    height: 280px;
+    margin-bottom: 40px;
     border: 1px solid #d5d5d5;
     padding: 36px 10px;
     cursor: pointer;
@@ -262,7 +265,7 @@ header .cart {
         .recommended-sec .item h6 a:hover {
           text-decoration: none;
           border-bottom: 0;
-          color: #ff9700; }
+          color: #913f9e; }
     .recommended-sec .item .hover {
       position: absolute;
       background: rgba(204, 204, 204, 0.7);
@@ -384,7 +387,7 @@ header .cart {
         .recent-book-sec .item h6 a:hover {
           text-decoration: none;
           border-bottom: 0;
-          color: #ff9700; }
+          color: #913f9e; }
   .recent-book-sec .row {
     margin: 0 -30px; }
     .recent-book-sec .row .col-lg-2 {
@@ -509,7 +512,7 @@ header .cart {
     margin: 0 5px;
     trnsition: all 0.3s; }
     .testimonial-sec button.owl-dot.active {
-      background: #ff9700;
+      background: #913f9e;
       transform: scale(1.6); }
   .testimonial-sec .left-quote {
     position: absolute;
@@ -1129,7 +1132,7 @@ footer {
         footer .copy-right .share span:last-child {
           padding-right: 0; }
         footer .copy-right .share span:hover {
-          color: #ff9700; }
+          color: #913f9e; }
 
 @media only screen and (max-width: 480px) {
   footer .timing {

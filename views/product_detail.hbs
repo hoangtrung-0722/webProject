@@ -8,11 +8,19 @@
 <body>
     {{> header active_products=true}}
     
-    <div class="breadcrumb">
+    {{!-- <div class="breadcrumb">
         <div class="container">
             <a class="breadcrumb-item" href="../../index">Home</a>
             <span class="breadcrumb-item active">Product Details</span>
         </div>
+    </div> --}}
+     <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"> <a class="breadcrumb-item" href="index">Home</a> </li>
+                <li class="breadcrumb-item active" aria-current="page">Products Details</li>
+            </ol>
+        </nav>
     </div>
     <section class="product-sec">
         <div class="container">
