@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> head}}
+</head>
+
+<body>
+    {{> header active_products=true}}
+    <div class="container">
+        <div class="breadcrumb">
+            <div class="container">
+                <a class="breadcrumb-item" href="index">Home</a>
+                <span class="breadcrumb-item active">Shopping Cart</span>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="table-secondary" scope="col">STT</th>
+                    <th class="table-secondary" scope="col">Tên sách</th>
+                    <th class="table-secondary" scope="col">Giá</th>
+                    <th class="table-secondary" scope="col">Số lượng</th>
+                    <th class="table-secondary" scope="col">Tổng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td><input type="number" name="count" value="1"></td>
+                    <td>@mdo</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td><input type="number" name="count" value="1"></td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td><input type="number" name="count" value="1"></td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/products"><button class="btn btn-primary">Tiếp tục mua sắm</button></a>
+        
+        <div class="col-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Giá sản phẩm</th>
+                        <td>200000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phí giao hàng</th>
+                        <td>50000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Tổng cộng</th>
+                        <td>@250000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+    {{> footer}}
+
+    {{> importJS}}
+</body>
+
+</html>

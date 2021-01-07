@@ -15,7 +15,7 @@
     <div class="main-menu">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light d-flex align-items-center">
-                <a class="navbar-brand" href="/index"><img src="/public/assets/images/logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="/index"><img src="/assets/images/logo.png" alt="logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -26,15 +26,18 @@
                         <li class="navbar-item {{#if active_home}}active{{/if}}">
                             <a href="/index" class="nav-link">Home</a>
                         </li>
-                        <li class="navbar-item dropdown {{#if active_products}}active{{/if}}">
+                        <li class="navbar-item {{#if active_products}}active{{/if}}">
+                            <a href="/products" class="nav-link">Products</a>
+                        </li>
+                        {{!-- <li class="navbar-item dropdown {{#if active_products}}active{{/if}}">
                             <a href="/products" class="nav-link dropdown-toggle-split"
                                 data-toggle="dropdown">Products</a>
-                            <ul class="dropdown-menu">
+                             <ul class="dropdown-menu">
                                 <li><a href="#" class="dropdown-item">Category #1</a></li>
                                 <li><a href="#" class="dropdown-item">Category #2</a></li>
                                 <li><a href="#" class="dropdown-item">Category #3</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         <li class="navbar-item {{#if active_about}}active{{/if}}">
                             <a href="about.html" class="nav-link">About</a>
                         </li>
@@ -61,11 +64,12 @@
                     </ul>
                     <div class="cart my-2 my-lg-0">
                         <span>
-                            <i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
-                        <span class="quantity">3</span>
+                            <a href="/products/shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                        </span>
+                        <span class="quantity">1</span>
                     </div>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search here..."
+                    <form class="form-inline">
+                        <input class="form-control" type="search" placeholder="Search here..."
                             aria-label="Search">
                         <span class="fa fa-search"></span>
                     </form>

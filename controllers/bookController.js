@@ -1,20 +1,20 @@
-const bookSchema = require('../models/bookSchema');
 const bookService = require('../models/services/bookService');
 
 const BOOKS_PER_PAGE = 12;
 
 module.exports.products = async (req, res, next) => {
-    const listRecommended = await bookService.get_recommended();
+    
 
     const page = +req.query.page || 1;
+    const sort_value = +req.query.sort;
 
-    //const list_sort = await bookService.sort_price(sort);
-
-    const paginate = await bookService.list(page, BOOKS_PER_PAGE);
-
+    let paginate = await bookService.list(page, BOOKS_PER_PAGE); 
+    
+    if(sort_value)
+        paginate = await bookService.sort_list(page, BOOKS_PER_PAGE, sort_value); 
+        
     res.render('products', {
         title: 'List of Products',
-        recommendedBook: listRecommended,
         book: paginate.docs,
         isFirstPage: paginate.page == 1,
         hasNextPage: paginate.hasNextPage,
@@ -28,7 +28,6 @@ module.exports.products = async (req, res, next) => {
         prevPrevPage: paginate.prevPage > 1 ? paginate.prevPage - 1 : null,
         isLastPage: paginate.page == paginate.totalPages,
         totalPages: paginate.totalPages
-        
     });
 }
 
@@ -38,4 +37,8 @@ module.exports.detail = async (req, res) => {
         title: book.name,
         book: book
     });
+}
+
+module.exports.shopping_cart = (req, res) =>{
+    res.render('shopping_cart');
 }

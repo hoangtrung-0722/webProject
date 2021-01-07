@@ -8,24 +8,38 @@
 <body>
     {{> header active_products=true}}
 
-    <div class="breadcrumb">
+    {{!-- <div class="breadcrumb">
         <div class="container">
             <a class="breadcrumb-item" href="index">Home</a>
-            <span class="breadcrumb-item active">Shop</span>
+            <span class="breadcrumb-item active">Products</span>
         </div>
+    </div> --}}
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"> <a class="breadcrumb-item" href="index">Home</a> </li>
+                <li class="breadcrumb-item active" aria-current="page">Products</li>
+            </ol>
+        </nav>
     </div>
+
     <section class="static about-sec">
         <div class="container">
-            <h2>Highly recommended books</h2>
-            <div class="recommended-sec">
-                <div class="row">
-                    {{#each recommendedBook}}
-                    {{> item book=this}}
-                    {{/each}}
+            <div class="row" style="margin-bottom: 50px;">
+                <p class="fs-2 fw-bold col-10">Recently added books to our store</p>
+                <div class="dropdown col-2">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Dropdown button
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
                 </div>
             </div>
-            <p class="fs-2">Recently added books to our store</p>
-            <p class="fs-1">.fs-1 text</p>
+
             {{!-- <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,71 +52,90 @@
                 </ul>
             </div> --}}
 
-
-            <div class="recent-book-sec">
-                <div class="row">
-                    {{#each book}}
-                    {{> item book = this}}
-                    {{/each}}
-                </div>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item {{#if isFirstPage}}disabled{{/if}}">
-                            <a class="page-link" href="/products?page=1" tabindex="-1" aria-disabled="true">First</a>
-                        </li>
-
-                        {{#if hasPrevPage}}
-                        <li class="page-item">
-                            <a class="page-link" href="/products?page={{prevPage}}" tabindex="-1">Previous</a>
-                        </li>
-                        {{else}}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        {{/if}}
-
-                        {{#if hasPrevPrevPage}}
-                        <li class="page-item"><a class="page-link"
-                                href="/products?page={{prevPrevPage}}">{{prevPrevPage}}</a>
-                        </li>
-                        {{/if}}
-
-                        {{#if hasPrevPage}}
-                        <li class="page-item"><a class="page-link" href="/products?page={{prevPage}}">{{prevPage}}</a>
-                        </li>
-                        {{/if}}
-
-
-                        <li class="page-item active"><a class="page-link" href="/products?page={{page}}">{{page}}</a>
-                        </li>
-
-                        {{#if hasNextPage}}
-                        <li class="page-item"><a class="page-link" href="/products?page={{nextPage}}">{{nextPage}}</a>
-                        </li>
-                        {{/if}}
-
-                        {{#if hasNextNextPage}}
-                        <li class="page-item"><a class="page-link"
-                                href="/products?page={{nextNextPage}}">{{nextNextPage}}</a>
-                        </li>
-                        {{/if}}
-
-                        {{#if hasNextPage}}
-                        <li class="page-item">
-                            <a class="page-link" href="/products?page={{nextPage}}" tabindex="-1">Next</a>
-                        </li>
-                        {{else}}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
-                        </li>
-                        {{/if}}
-                        <li class="page-item {{#if isLastPage}}disabled{{/if}}">
-                            <a class="page-link" href="/products?page={{totalPages}}" tabindex="-1" aria-disabled="true">Last</a>
-                        </li>
-
+            <div class="row">
+                <div class="col-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>
+                        <li class="list-group-item"><a href="">Cras justo odio</a></li>    
                     </ul>
-                </nav>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-8">
+                    <div class="recent-book-sec">
+                        <div class="row">
+                            {{#each book}}
+                            {{> item book=this}}
+                            {{/each}}
+                        </div>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center">
+                                <li class="page-item {{#if isFirstPage}}disabled{{/if}}">
+                                    <a class="page-link" href="?page=1" tabindex="-1" aria-disabled="true">First</a>
+                                </li>
+
+                                {{#if hasPrevPage}}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{prevPage}}" tabindex="-1">Previous</a>
+                                </li>
+                                {{else}}
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+                                {{/if}}
+
+                                {{#if hasPrevPrevPage}}
+                                <li class="page-item"><a class="page-link"
+                                        href="?page={{prevPrevPage}}">{{prevPrevPage}}</a>
+                                </li>
+                                {{/if}}
+
+                                {{#if hasPrevPage}}
+                                <li class="page-item"><a class="page-link" href="?page={{prevPage}}">{{prevPage}}</a>
+                                </li>
+                                {{/if}}
+
+
+                                <li class="page-item active"><a class="page-link" href="?page={{page}}">{{page}}</a>
+                                </li>
+
+                                {{#if hasNextPage}}
+                                <li class="page-item"><a class="page-link" href="?page={{nextPage}}">{{nextPage}}</a>
+                                </li>
+                                {{/if}}
+
+                                {{#if hasNextNextPage}}
+                                <li class="page-item"><a class="page-link"
+                                        href="?page={{nextNextPage}}">{{nextNextPage}}</a>
+                                </li>
+                                {{/if}}
+
+                                {{#if hasNextPage}}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{nextPage}}" tabindex="-1">Next</a>
+                                </li>
+                                {{else}}
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+                                </li>
+                                {{/if}}
+                                <li class="page-item {{#if isLastPage}}disabled{{/if}}">
+                                    <a class="page-link" href="?page={{totalPages}}" tabindex="-1"
+                                        aria-disabled="true">Last</a>
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 

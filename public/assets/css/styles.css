@@ -1153,4 +1153,8 @@ footer {
   .navbar .nav-item .dropdown-menu { margin-top:0; }
 }
 
+a{
+  text-decoration: none;
+  color: #212121;
+}
 /*# sourceMappingURL=styles.css.map */

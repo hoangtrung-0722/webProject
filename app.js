@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 //routers
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/books', booksRouter);
+app.use('/products', booksRouter);
 app.use('/', authRouter);
 
 // catch 404 and forward to error handler

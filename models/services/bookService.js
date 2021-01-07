@@ -7,9 +7,20 @@ exports.list = async (pageNum, booksPerPage) => {
         page: pageNum,
         limit: booksPerPage
     });
-
     return books;
 }
+
+exports.sort_list = async (pageNum, booksPerPage, sort_value) => {
+    const books = await BookModel.paginate({}, {
+        sort: {
+            price: 0
+        },
+        page: pageNum,
+        limit: booksPerPage
+    });
+    return books;
+}
+
 
 exports.get = async (id) => {
     const book = await BookModel.findOne({ _id: new mongoose.Types.ObjectId(id)});
