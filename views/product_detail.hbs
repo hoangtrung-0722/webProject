@@ -28,36 +28,24 @@
             <div class="row">
                 <div class="col-md-6 slider-sec">
                     <!-- main slider carousel -->
-                    <div id="myCarousel" class="carousel slide">
+                    <div id="myCarousel" class="carousel slide" data-ride=carousel>
                         <!-- main slider carousel items -->
                         <div class="carousel-inner">
-                            <div class="active item carousel-item" data-slide-number="0">
-                                <img src="images/product1.jpg" class="img-fluid">
+                            {{#each book.images}}
+                            <div class="{{#if @first}}active{{/if}} item carousel-item" data-slide-number="{{@index}}">
+                                <img src="{{this}}" class="img-fluid">
                             </div>
-                            <div class="item carousel-item" data-slide-number="1">
-                                <img src="images/product2.jpg" class="img-fluid">
-                            </div>
-                            <div class="item carousel-item" data-slide-number="2">
-                                <img src="images/product3.jpg" class="img-fluid">
-                            </div>
+                            {{/each}}
                         </div>
                         <!-- main slider carousel nav controls -->
                         <ul class="carousel-indicators list-inline">
-                            <li class="list-inline-item active">
-                                <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#myCarousel">
-                                <img src="images/product1.jpg" class="img-fluid">
+                            {{#each book.images}}
+                            <li class="list-inline-item {{#if @first}}active{{/if}}">
+                                <a id="carousel-selector-{{@index}}" {{#if @first}}class="selected"{{/if}} data-slide-to="{{@index}}" data-target="#myCarousel">
+                                <img src="{{this}}" class="img-fluid">
                             </a>
                             </li>
-                            <li class="list-inline-item">
-                                <a id="carousel-selector-1" data-slide-to="1" data-target="#myCarousel">
-                                <img src="images/product2.jpg" class="img-fluid">
-                            </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a id="carousel-selector-2" data-slide-to="2" data-target="#myCarousel">
-                                <img src="images/product3.jpg" class="img-fluid">
-                            </a>
-                            </li>
+                            {{/each}}
                         </ul>
                     </div>
                     <!--/main slider carousel-->
@@ -71,10 +59,10 @@
                         </li>
                         {{#if book.sale}}
                         <li>
-                            <span class="name">Kindle Price</span><span class="clm">:</span>
-                            <span class="price final">$ Lower price :v</span>
+                            <span class="name">Discount</span><span class="clm">:</span>
+                            <span class="price final">${{book.sale-price}}</span>
                         </li>
-                        <li><span class="save-cost">Save $ (idk) ({{book.sale}}%)</span></li>
+                        <li><span class="save-cost">Save ${{toFixed (minus book.price book.sale-price) 2}} ({{book.sale}}%)</span></li>
                         {{/if}}
                     </ul>
                     <div class="btn-sec">

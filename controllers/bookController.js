@@ -3,8 +3,6 @@ const bookService = require('../models/services/bookService');
 const BOOKS_PER_PAGE = 12;
 
 module.exports.products = async (req, res, next) => {
-    
-
     const page = +req.query.page || 1;
     const sort_value = +req.query.sort;
 
@@ -12,8 +10,6 @@ module.exports.products = async (req, res, next) => {
     
     if(sort_value)
         paginate = await bookService.sort_list(page, BOOKS_PER_PAGE, sort_value); 
-    
-    const book = paginate.docs;
 
     res.render('products', {
         title: 'List of Products',
@@ -42,5 +38,5 @@ module.exports.detail = async (req, res) => {
 }
 
 module.exports.shopping_cart = (req, res) =>{
-    res.render('shopping_cart');
+    res.render('shopping_cart', {title: 'Shopping cart'});
 }

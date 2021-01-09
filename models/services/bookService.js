@@ -1,4 +1,4 @@
-const BookModel = require('../bookSchema');
+const BookModel = require('../Book');
 const mongoose = require('mongoose');
 
 
@@ -24,6 +24,7 @@ exports.sort_list = async (pageNum, booksPerPage, sort_value) => {
 
 exports.get = async (id) => {
     const book = await BookModel.findOne({ _id: new mongoose.Types.ObjectId(id)});
+    console.log(book);
     return book;
 }
 
