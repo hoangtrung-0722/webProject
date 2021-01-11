@@ -67,14 +67,15 @@
                     <ul>
                         <li>
                             <span class="name">Base Price</span><span class="clm">:</span>
-                            <span class="price">{{book.price}}</span>
+                            <span class="price {{#if book.sale}}final{{/if}}">{{book.price}}</span>
                         </li>
-                        {{!-- USE THIS LATER --}}
-                        {{!-- <li>
+                        {{#if book.sale}}
+                        <li>
                             <span class="name">Kindle Price</span><span class="clm">:</span>
-                            <span class="price final">$3.37</span>
+                            <span class="price final">$ Lower price :v</span>
                         </li>
-                        <li><span class="save-cost">Save $7.62 (69%)</span></li> --}}
+                        <li><span class="save-cost">Save $ (idk) ({{book.sale}}%)</span></li>
+                        {{/if}}
                     </ul>
                     <div class="btn-sec">
                         <button class="btn ">Add To cart</button>
