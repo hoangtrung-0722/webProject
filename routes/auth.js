@@ -17,7 +17,7 @@ router.get('/register', authController.openRegister);
 
 router.post('/register', authController.registerUser);
 
-router.get('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   req.logOut();
   res.redirect('/');
 })

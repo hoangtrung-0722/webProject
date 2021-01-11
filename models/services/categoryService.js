@@ -1,6 +1,5 @@
-const categories = require("../categorySchema");
+const Category = require("../Category");
 
 module.exports.get_categories = async () =>{
-    const category_list = await categories.find();
-    return category_list;
+    return await Category.find();
 }

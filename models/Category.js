@@ -1,4 +1,3 @@
-const { ObjectID } = require('mongodb');
 const mongoose = require('mongoose');
 
 const categorySchema = new mongoose.Schema ({

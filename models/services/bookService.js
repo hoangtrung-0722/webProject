@@ -1,11 +1,11 @@
-const BookModel = require('../bookSchema');
-const categoryModel = require('../categorySchema');
+const Category = require('../Category');
+const Book = require('../Book');
 
 const mongoose = require('mongoose');
 
 
 exports.list = async (pageNum, booksPerPage) => {
-    let books = await BookModel.paginate({}, {
+    let books = await Book.paginate({}, {
         page: pageNum,
         limit: booksPerPage
     });
@@ -13,7 +13,7 @@ exports.list = async (pageNum, booksPerPage) => {
 }
 
 exports.sort_list = async (pageNum, booksPerPage, sort_value) => {
-    let books = await BookModel.paginate({}, {
+    let books = await Book.paginate({}, {
         sort: {
             price: sort_value
         },
@@ -24,7 +24,7 @@ exports.sort_list = async (pageNum, booksPerPage, sort_value) => {
 }
 
 exports.category_list = async (pageNum, booksPerPage, category) => {
-    let books = await BookModel.paginate({
+    let books = await Book.paginate({
         category: category
     }, {
         page: pageNum,
@@ -34,7 +34,7 @@ exports.category_list = async (pageNum, booksPerPage, category) => {
 }
 
 exports.category_sort_list = async (pageNum, booksPerPage, sort_value, category) => {
-    let books = await BookModel.paginate({
+    let books = await Book.paginate({
         category: category
     }, {
         sort: {
@@ -48,11 +48,12 @@ exports.category_sort_list = async (pageNum, booksPerPage, sort_value, category)
 
 
 exports.get = async (id) => {
-    const book = await BookModel.findOne({ _id: new mongoose.Types.ObjectId(id)});
+    const book = await Book.findOne({ _id: new mongoose.Types.ObjectId(id)});
+    console.log(book);
     return book;
 }
 
 exports.get_recommended = async (books_per_page) => {
-    const books = await BookModel.find({}).limit(books_per_page);
+    const books = await Book.find({}).limit(books_per_page);
     return books;
 }

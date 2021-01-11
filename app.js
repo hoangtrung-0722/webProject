@@ -1,4 +1,5 @@
 require('dotenv').config();
+require('./dal/database');
 
 const createError = require('http-errors');
 const express = require('express');
@@ -7,7 +8,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
-const mongooseDB = require('./dal/database');
+const mathHelpers = require('handlebars-helpers')({handlebars: hbs}, ['math', 'number']);
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');

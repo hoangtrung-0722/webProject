@@ -24,6 +24,7 @@ module.exports.products = async (req, res, next) => {
             paginate = await bookService.sort_list(page, BOOKS_PER_PAGE, sort_value); 
     }
 
+
     res.render('products', {
         title: 'List of Products',
         book: paginate.docs,
@@ -56,5 +57,5 @@ module.exports.detail = async (req, res) => {
 }
 
 module.exports.shopping_cart = (req, res) =>{
-    res.render('shopping_cart');
+    res.render('shopping_cart', {title: 'Shopping cart'});
 }
