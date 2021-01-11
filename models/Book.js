@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 
@@ -8,7 +9,8 @@ const bookSchema = new mongoose.Schema ({
     price: Number,
     sale: {type: Number, default: 0},
     cover: String,
-    description: String,    
+    description: String,
+    category: ObjectId,  
 });
 
 bookSchema.virtual('sale-price').get(function() {

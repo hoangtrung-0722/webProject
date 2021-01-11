@@ -1,6 +1,8 @@
 const bookService = require('../models/services/bookService');
 const categoryService = require('../models/services/categoryService');
 
+
+
 const BOOKS_PER_PAGE = 12;
 
 module.exports.products = async (req, res, next) => {
@@ -48,10 +50,15 @@ module.exports.products = async (req, res, next) => {
 }
 
 module.exports.detail = async (req, res) => {
-    const book = await bookService.get(req.params.id);
+    const book_id = req.params.id;
+
+    const book = await bookService.get(book_id);
+    const books_related = await bookService.related_list(book.category, book.name);
+
     res.render('product_detail', {
         title: book.name,
-        book: book
+        book: book,
+        books_related: books_related,
     });
 }
 
