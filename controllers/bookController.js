@@ -40,7 +40,9 @@ module.exports.products = async (req, res, next) => {
         isLastPage: paginate.page == paginate.totalPages,
         totalPages: paginate.totalPages,
         sort_value: sort_value,
+        hasSort: sort_value != null,
         category: category_value,
+        hasCategory: category_value != null,
         category_list: categories,
     });
 }

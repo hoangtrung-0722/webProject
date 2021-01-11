@@ -33,8 +33,8 @@
                         Sort
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item" href="?sort=1">Price increased gradually</a></li>
-                        <li><a class="dropdown-item" href="?sort=-1">Price decreased gradually</a></li>
+                        <li><a class="dropdown-item" href="?sort=1{{#if hasCategory}}&category={{category}}{{/if}}">Price increased gradually</a></li>
+                        <li><a class="dropdown-item" href="?sort=-1{{#if hasCategory}}&category={{category}}{{/if}}">Price decreased gradually</a></li>
                     </ul>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                             <h3>Category</h3>
                         </li>
                         {{#each category_list}}
-                        <li class="list-group-item"><a href="/products/{{_id}}">{{name}}</a></li>
+                        <li class="list-group-item"><a href="/products?category={{_id}}">{{name}}</a></li>
                         {{/each}}
                     </ul>
                 </div>
@@ -75,12 +75,12 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             <li class="page-item {{#if isFirstPage}}disabled{{/if}}">
-                                <a class="page-link" href="?page=1&sort={{sort_value}}" tabindex="-1" aria-disabled="true">First</a>
+                                <a class="page-link" href="?page=1{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}" tabindex="-1" aria-disabled="true">First</a>
                             </li>
 
                             {{#if hasPrevPage}}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{prevPage}}&sort={{sort_value}}" tabindex="-1">Previous</a>
+                                <a class="page-link" href="?page={{prevPage}}{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}" tabindex="-1">Previous</a>
                             </li>
                             {{else}}
                             <li class="page-item disabled">
@@ -90,33 +90,33 @@
 
                             {{#if hasPrevPrevPage}}
                             <li class="page-item"><a class="page-link"
-                                    href="?page={{prevPrevPage}}&sort={{sort_value}}">{{prevPrevPage}}</a>
+                                    href="?page={{prevPrevPage}}{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}">{{prevPrevPage}}</a>
                             </li>
                             {{/if}}
 
                             {{#if hasPrevPage}}
-                            <li class="page-item"><a class="page-link" href="?page={{prevPage}}&sort={{sort_value}}">{{prevPage}}</a>
+                            <li class="page-item"><a class="page-link" href="?page={{prevPage}}{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}">{{prevPage}}</a>
                             </li>
                             {{/if}}
 
 
-                            <li class="page-item active"><a class="page-link" href="?page={{page}}&sort={{sort_value}}">{{page}}</a>
+                            <li class="page-item active"><a class="page-link" href="?page={{page}}{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}">{{page}}</a>
                             </li>
 
                             {{#if hasNextPage}}
-                            <li class="page-item"><a class="page-link" href="?page={{nextPage}}&sort={{sort_value}}">{{nextPage}}</a>
+                            <li class="page-item"><a class="page-link" href="?page={{nextPage}}{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}">{{nextPage}}</a>
                             </li>
                             {{/if}}
 
                             {{#if hasNextNextPage}}
                             <li class="page-item"><a class="page-link"
-                                    href="?page={{nextNextPage}}&sort={{sort_value}}">{{nextNextPage}}</a>
+                                    href="?page={{nextNextPage}}{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}">{{nextNextPage}}</a>
                             </li>
                             {{/if}}
 
                             {{#if hasNextPage}}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{nextPage}}&sort={{sort_value}}" tabindex="-1">Next</a>
+                                <a class="page-link" href="?page={{nextPage}}{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}" tabindex="-1">Next</a>
                             </li>
                             {{else}}
                             <li class="page-item disabled">
@@ -124,7 +124,7 @@
                             </li>
                             {{/if}}
                             <li class="page-item {{#if isLastPage}}disabled{{/if}}">
-                                <a class="page-link" href="?page={{totalPages}}&sort={{sort_value}}" tabindex="-1"
+                                <a class="page-link" href="?page={{totalPages}}{{#if hasSort}}&sort={{sort_value}}{{/if}}{{#if hasCategory}}&category={{category}}{{/if}}" tabindex="-1"
                                     aria-disabled="true">Last</a>
                             </li>
 

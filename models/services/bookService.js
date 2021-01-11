@@ -24,10 +24,9 @@ exports.sort_list = async (pageNum, booksPerPage, sort_value) => {
 }
 
 exports.category_list = async (pageNum, booksPerPage, category) => {
-    let books = await BookModel.paginate({}, {
-        select:{
-            category: category
-        },
+    let books = await BookModel.paginate({
+        category: category
+    }, {
         page: pageNum,
         limit: booksPerPage
     });
@@ -35,10 +34,9 @@ exports.category_list = async (pageNum, booksPerPage, category) => {
 }
 
 exports.category_sort_list = async (pageNum, booksPerPage, sort_value, category) => {
-    let books = await BookModel.paginate({}, {
-        select:{
-            category: category
-        },
+    let books = await BookModel.paginate({
+        category: category
+    }, {
         sort: {
             price: sort_value
         },
