@@ -1,4 +1,6 @@
 const BookModel = require('../bookSchema');
+const categoryModel = require('../categorySchema');
+
 const mongoose = require('mongoose');
 
 
@@ -12,6 +14,31 @@ exports.list = async (pageNum, booksPerPage) => {
 
 exports.sort_list = async (pageNum, booksPerPage, sort_value) => {
     let books = await BookModel.paginate({}, {
+        sort: {
+            price: sort_value
+        },
+        page: pageNum,
+        limit: booksPerPage
+    });
+    return books;
+}
+
+exports.category_list = async (pageNum, booksPerPage, category) => {
+    let books = await BookModel.paginate({}, {
+        select:{
+            category: category
+        },
+        page: pageNum,
+        limit: booksPerPage
+    });
+    return books;
+}
+
+exports.category_sort_list = async (pageNum, booksPerPage, sort_value, category) => {
+    let books = await BookModel.paginate({}, {
+        select:{
+            category: category
+        },
         sort: {
             price: sort_value
         },
