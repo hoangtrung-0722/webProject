@@ -17,7 +17,7 @@
      <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"> <a class="breadcrumb-item" href="index">Home</a> </li>
+                <li class="breadcrumb-item"> <a class="breadcrumb-item" href="/index">Home</a> </li>
                 <li class="breadcrumb-item active" aria-current="page">Products Details</li>
             </ol>
         </nav>
@@ -55,7 +55,7 @@
                     <ul>
                         <li>
                             <span class="name">Base Price</span><span class="clm">:</span>
-                            <span class="price {{#if book.sale}}final{{/if}}">{{book.price}}</span>
+                            <span class="price {{#unless book.sale}}final{{/unless}}">{{book.price}}</span>
                         </li>
                         {{#if book.sale}}
                         <li>

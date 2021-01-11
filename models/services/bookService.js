@@ -25,7 +25,7 @@ exports.sort_list = async (pageNum, booksPerPage, sort_value) => {
 
 exports.category_list = async (pageNum, booksPerPage, category) => {
     let books = await Book.paginate({
-        category: category
+        category: mongoose.Types.ObjectId(category)
     }, {
         page: pageNum,
         limit: booksPerPage
@@ -35,7 +35,7 @@ exports.category_list = async (pageNum, booksPerPage, category) => {
 
 exports.category_sort_list = async (pageNum, booksPerPage, sort_value, category) => {
     let books = await Book.paginate({
-        category: category
+        category: mongoose.Types.ObjectId(category)
     }, {
         sort: {
             price: sort_value
@@ -49,7 +49,6 @@ exports.category_sort_list = async (pageNum, booksPerPage, sort_value, category)
 
 exports.get = async (id) => {
     const book = await Book.findOne({ _id: new mongoose.Types.ObjectId(id)});
-    console.log(book);
     return book;
 }
 
