@@ -2,7 +2,6 @@ const bookService = require('../models/services/bookService');
 const categoryService = require('../models/services/categoryService');
 
 
-
 const BOOKS_PER_PAGE = 12;
 
 module.exports.products = async (req, res, next) => {
@@ -10,22 +9,42 @@ module.exports.products = async (req, res, next) => {
     const sort_value = +req.query.sort;
     const category_value = req.query.category;
 
-    const categories = await categoryService.get_categories();
+    let q = req.query.q;
+
+    
 
     let paginate = await bookService.list(page, BOOKS_PER_PAGE);
 
-    if(category_value){
-        if(sort_value){
-            paginate = await bookService.category_sort_list(page, BOOKS_PER_PAGE, sort_value, category_value);
-        }  
-        else{
-            paginate = await bookService.category_list(page, BOOKS_PER_PAGE, category_value);
-        }
-    }else{
-        if(sort_value)
-            paginate = await bookService.sort_list(page, BOOKS_PER_PAGE, sort_value); 
-    }
+    const categories = await categoryService.get_categories();
 
+   if(q){
+        paginate = await bookService.search(page, BOOKS_PER_PAGE, q);
+        if(category_value){
+            if(sort_value){
+                paginate = await bookService.category_sort_list(page, BOOKS_PER_PAGE, sort_value, category_value);
+            }  
+            else{
+                paginate = await bookService.category_list(page, BOOKS_PER_PAGE, category_value);
+            }
+        }else{
+            if(sort_value)
+                paginate = await bookService.sort_list(page, BOOKS_PER_PAGE, sort_value); 
+        }
+   } else {
+        if(category_value){
+            if(sort_value){
+                paginate = await bookService.category_sort_list(page, BOOKS_PER_PAGE, sort_value, category_value);
+            }  
+            else{
+                paginate = await bookService.category_list(page, BOOKS_PER_PAGE, category_value);
+            }
+        }else{
+            if(sort_value)
+                paginate = await bookService.sort_list(page, BOOKS_PER_PAGE, sort_value); 
+        }
+   }
+    
+    
     res.render('products', {
         title: 'List of Products',
         book: paginate.docs,
@@ -46,6 +65,9 @@ module.exports.products = async (req, res, next) => {
         category: category_value,
         hasCategory: category_value != null,
         category_list: categories,
+        q: q,
+        hasQ: q != null,
+        
     });
 }
 
