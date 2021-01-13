@@ -7,7 +7,7 @@
 
 <body>
     {{> header active_products=true}}
-    <div class="container">
+    <div class="container" style="margin-bottom:50px;">
         {{!-- <div class="breadcrumb">
             <div class="container">
                 <a class="breadcrumb-item" href="index">Home</a>
@@ -19,61 +19,62 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th class="table-secondary" scope="col">STT</th>
-                    <th class="table-secondary" scope="col">Tên sách</th>
-                    <th class="table-secondary" scope="col">Giá</th>
-                    <th class="table-secondary" scope="col">Số lượng</th>
-                    <th class="table-secondary" scope="col">Tổng</th>
+                    <th class="table-secondary" scope="col">Serial</th>
+                    <th class="table-secondary" scope="col">Book's name</th>
+                    <th class="table-secondary" scope="col">Price</th>
+                    <th class="table-secondary" scope="col">Amount</th>
+                    <th class="table-secondary" scope="col">Sum</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
-                    <td>Otto</td>
+                    <td>4000</td>
                     <td><input type="number" name="count" value="1"></td>
                     <td>@mdo</td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
                     <td>Jacob</td>
-                    <td>Thornton</td>
+                    <td>2000</td>
                     <td><input type="number" name="count" value="1"></td>
                     <td>@fat</td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
+                    <td>Larry the Bird</td>
+                    <td>3000</td>
                     <td><input type="number" name="count" value="1"></td>
                     <td>@twitter</td>
                 </tr>
             </tbody>
         </table>
-        <a href="/products"><button class="btn btn-primary">Continue shopping</button></a>
+        <a href="/products"><button class="btn btn-primary" style="margin-bottom:50px;">Continue shopping</button></a>
         
         <div class="col-4">
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Thành tiền</th>
+                        <span style="font-weight: 500; font-size:40px; margin-left:10px">Bill</span>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">Giá sản phẩm</th>
+                        <th scope="row">Bookselling price</th>
                         <td>200000</td>
                     </tr>
                     <tr>
-                        <th scope="row">Phí giao hàng</th>
+                        <th scope="row">Transport fee</th>
                         <td>50000</td>
                     </tr>
                     <tr>
-                        <th scope="row">Tổng cộng</th>
+                        <th scope="row">Total</th>
                         <td>@250000</td>
                     </tr>
                 </tbody>
             </table>
-            <a href="{{#if currentUser}}/products{{else}}/login{{/if}}"><button class="btn btn-primary">Checkout</button></a>
+            <a href="{{#if currentUser}}/products{{else}}/login{{/if}}" ><button class="btn btn-primary" >Checkout</button></a>
         </div>
     </div>
 
