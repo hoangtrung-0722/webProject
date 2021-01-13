@@ -10,3 +10,27 @@ a {
 .product-sec .carousel-inner .carousel-item img {
   width: 100%;
 }
+
+.about-sec .container .field-name {
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.text-error {
+  font-weight: 500;
+  color: red;
+}
+
+.form-error input {
+  border: 2px solid red;
+}
+
+.form-success input {
+  border: 2px solid green;
+}
+
+.form-success p {
+  font-weight: 500;
+  color: green;
+}

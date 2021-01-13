@@ -8,7 +8,7 @@ const bookSchema = new mongoose.Schema ({
     price: Number,
     sale: {type: Number, default: 0},
     cover: String,
-    description: String,    
+    description: String,
 });
 
 bookSchema.virtual('sale-price').get(function() {

@@ -16,10 +16,17 @@
     <section class="static about-sec">
         <div class="container">
             <h1>My Account / Login</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only fiveLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem </p>
+            <p><span class="field-name">Username</span> is 8-20 characters long, not contain any special character
+                except _ and . (no _ or . at the beginning, or the end)</p>
+            <p><span class="field-name">Password</span> must have more than 6 characters, contain at least 1 uppercase
+                character, 1 lowercase character and 1 number</p>
+            {{#if message}}
+            <p class="text-error">{{message}}</p>
+            {{/if}}
             <div class="form">
-                <form method="POST" action='/login'>
-                    <input name="username" placeholder="Enter Email / User Name" required pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$">
+                <form method="POST" action='/login' id="login-form">
+                    <input name="username" placeholder="Enter Email / User Name" required
+                        pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$">
                     <span class="required-star">*</span>
 
                     <input name="password" type="password" placeholder="Enter Password" required>
@@ -34,6 +41,7 @@
     {{> footer}}
 
     {{> importJS}}
+    <script src="../javascript/validate.js"></script>
 </body>
 
 </html>
