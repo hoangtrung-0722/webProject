@@ -22,7 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
-                    <div class="navbar-nav mr-auto" >
+                    <div class="navbar-nav mr-auto">
                         <ul class="navbar-nav my-auto">
                             <li class="navbar-item {{#if active_home}}active{{/if}}">
                                 <a href="/index" class="nav-link">Home</a>
@@ -48,7 +48,8 @@
 
                         </ul>
                         <form class="form-inline d-flex align-items-center" action="/products">
-                            <input name="q" class="form-control" type="search" placeholder="Search here..." aria-label="Search">
+                            <input name="q" class="form-control" type="search" placeholder="Search here..."
+                                aria-label="Search">
                             <span class="fa fa-search text-secondary"></span>
                         </form>
                     </div>
@@ -56,7 +57,7 @@
                         <span>
                             <a href="/products/shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                         </span>
-                        {{!-- <span class="quantity">1</span> --}}
+                        <span class="quantity" style="display: none;">0</span>
                     </div>
                     {{#if currentUser}}
                     <div class="dropdown navbar-nav">
@@ -70,7 +71,8 @@
                                 <form class="dropdown-item" action="/logout" method="POST">
                                     <input type="submit" value="Logout">
                                 </form>
-                                {{!-- <a href="/logout" class="dropdown-item">Sign out</a></li> --}}
+                                {{!-- <a href="/logout" class="dropdown-item">Sign out</a>
+                            </li> --}}
                         </ul>
                     </div>
                     {{else}}

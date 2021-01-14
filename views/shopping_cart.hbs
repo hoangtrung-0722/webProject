@@ -14,9 +14,9 @@
                 <span class="breadcrumb-item active">Shopping Cart</span>
             </div>
         </div> --}}
-        
 
-        <table class="table">
+
+        <table class="table" id="cart-table">
             <thead>
                 <tr>
                     <th class="table-secondary" scope="col">Serial</th>
@@ -27,60 +27,57 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>4000</td>
-                    <td><input type="number" name="count" value="1"></td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>2000</td>
-                    <td><input type="number" name="count" value="1"></td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry the Bird</td>
-                    <td>3000</td>
-                    <td><input type="number" name="count" value="1"></td>
-                    <td>@twitter</td>
-                </tr>
+                {{!-- generate when cart has items inside --}}
             </tbody>
         </table>
         <a href="/products"><button class="btn btn-primary" style="margin-bottom:50px;">Continue shopping</button></a>
-        
-        <div class="col-4">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <span style="font-weight: 500; font-size:40px; margin-left:10px">Bill</span>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Bookselling price</th>
-                        <td>200000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Transport fee</th>
-                        <td>50000</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Total</th>
-                        <td>@250000</td>
-                    </tr>
-                </tbody>
-            </table>
-            <a href="{{#if currentUser}}/products{{else}}/login{{/if}}" ><button class="btn btn-primary" >Checkout</button></a>
+
+        <div class="col-6">
+            <form action="">
+                <div class="form">
+                    <table class="table" id="bill-table">
+                        <thead>
+                            <tr>
+                                <span style="font-weight: 500; font-size:40px; margin-left:10px">Bill</span>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Receiver</th>
+                                <td><input type="text" name="name" value="{{currentUser.name}}" style="border-radius:3px; padding: 5px 5px; border: 0.5px solid #212121;"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Your Phone</th>
+                                <td><input type="text" name="name" value="{{currentUser.phone}}" style="border-radius:3px; padding: 5px 5px; border: 0.5px solid #212121;"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Your address</th>
+                                <td><input type="text" name="name" value="{{currentUser.address}}" style="border-radius:3px; padding: 5px 5px; border: 0.5px solid #212121;"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><label>Bookselling price</label></th>
+                                <td><input name="bookPrice" value="" readonly style="border: none; font-size: 19px; color: #454545dc;"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Transport fee</th>
+                                <td><input name="transportFee" value="3" readonly style="border: none; font-size: 19px; color: #454545dc;"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Total</th>
+                                <td><input name="totalPrice" value="" readonly style="border: none; font-size: 19px; color: #454545dc;"></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                    <a href="{{#if currentUser}}/products{{else}}/login{{/if}}"><button
+                            class="btn btn-primary">Checkout</button></a>
+            </form>
         </div>
     </div>
 
     {{> footer}}
 
-    {{> importJS}}
+    {{> importJS}} 
 </body>
 
 </html>
