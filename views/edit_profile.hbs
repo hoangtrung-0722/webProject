@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> head}}
+</head>
+
+<body>
+    {{> header active_products=true}}
+
+    <div class="container" style="margin-bottom: 50px;">
+
+        <form action="" method="POST">
+            <div class="row">
+                <div class="col-2">
+                    <div class="label-profile">Name:</div>
+                    <div class="label-profile">Email:</div>
+                    <div class="label-profile">Phone:</div>
+                    <div class="label-profile">Address:</div>
+                </div>
+                <div class="col-10">
+                    <div><input class="input-profile" name="name" type="text" value="{{name}}"></div>
+                    <div><input class="input-profile" name="email" type="text" value="{{email}}"></div>
+                    <div><input class="input-profile" name="phone" type="text" value="{{phone}}"></div>
+                    <div><input class="input-profile" name="address" type="text" value="{{address}}"></div>
+                </div>
+            </div>
+            <a href="/users/profile" class="btn" style="background-color: rgb(199, 0, 0); border: none;">Cancel</a>
+            <button class="btn btn-primary" style="border: none; float: right;">Update</button>
+        </form>
+    </div>
+
+    {{> footer}}
+
+    {{> importJS}}
+</body>
+
+</html>
