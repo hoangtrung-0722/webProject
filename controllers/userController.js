@@ -4,14 +4,23 @@ const User = require("../models/User");
 
 module.exports.profile = (req, res) => {
   const user = req.user;
-  console.log(user);
 
   res.render("profile", {
     title: user.username + "'s profile",
-    name: user.name,
-    email: user.email,
-    phone: user.phone,
-    address: user.address,
+  });
+};
+
+module.exports.openEdit = async (req, res) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const phone = req.body.phone;
+  const address = req.body.address;
+
+  res.render("edit_profile", {
+    name: name,
+    email: email,
+    phone: phone,
+    address: address,
   });
 };
 
@@ -22,28 +31,32 @@ module.exports.edit = async (req, res) => {
   const address = req.body.address;
 
   const user = req.user;
-  // user.name = name;
-  // user.email = email;
-  // user.phone = phone;
-  // user.address = address;
+  if (name != "") {
+    user.name = name;
+  }
+  if (email != "") {
+    user.email = email;
+  }
+  if (phone != "") {
+    user.phone = phone;
+  }
+  if (address != "") {
+    user.address = address;
+  }
+
   await User.updateOne(
     {
       _id: mongoose.Types.ObjectId(user._id),
     },
     {
-      $set: {
-        name: name,
-        email: email,
-        phone: phone,
-        address: address,
-      },
+      $set: user,
     }
   );
 
-  res.render("edit_profile", {
-    name: name,
-    email: email,
-    phone: phone,
-    address: address,
+  req.session.save(function (err) {
+    req.session.reload(function (err) {
+      res.redirect("/users/profile");
+    });
   });
+  //res.redirect("/users/profile");
 };

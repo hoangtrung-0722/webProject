@@ -33,7 +33,7 @@
         <a href="/products"><button class="btn btn-primary" style="margin-bottom:50px;">Continue shopping</button></a>
 
         <div class="col-6">
-            <form action="">
+            <form action="{{#if currentUser}}/products/checkout{{/if}}" method="POST" id="billForm">
                 <div class="form">
                     <table class="table" id="bill-table">
                         <thead>
@@ -44,40 +44,47 @@
                         <tbody>
                             <tr>
                                 <th scope="row">Receiver</th>
-                                <td><input type="text" name="name" value="{{currentUser.name}}" style="border-radius:3px; padding: 5px 5px; border: 0.5px solid #212121;"></td>
+                                <td><input type="text" name="name" value="{{currentUser.name}}" class="form-control"
+                                        required></td>
                             </tr>
                             <tr>
                                 <th scope="row">Your Phone</th>
-                                <td><input type="text" name="name" value="{{currentUser.phone}}" style="border-radius:3px; padding: 5px 5px; border: 0.5px solid #212121;"></td>
+                                <td><input type="text" name="phone" value="{{currentUser.phone}}" class="form-control"
+                                        required></td>
                             </tr>
                             <tr>
-                                <th scope="row">Your address</th>
-                                <td><input type="text" name="name" value="{{currentUser.address}}" style="border-radius:3px; padding: 5px 5px; border: 0.5px solid #212121;"></td>
+                                <th scope="row">Address to receive</th>
+                                <td><input type="text" name="address" value="{{currentUser.address}}"
+                                        class="form-control" required></td>
                             </tr>
                             <tr>
                                 <th scope="row"><label>Bookselling price</label></th>
-                                <td><input name="bookPrice" value="" readonly style="border: none; font-size: 19px; color: #454545dc;"></td>
+                                <td><input name="bookPrice" value="" readonly
+                                        style="border: none; font-size: 19px; color: #454545dc;"></td>
                             </tr>
                             <tr>
                                 <th scope="row">Transport fee</th>
-                                <td><input name="transportFee" value="3" readonly style="border: none; font-size: 19px; color: #454545dc;"></td>
+                                <td><input name="transportFee" value="5" readonly
+                                        style="border: none; font-size: 19px; color: #454545dc;"></td>
                             </tr>
                             <tr>
                                 <th scope="row">Total</th>
-                                <td><input name="totalPrice" value="" readonly style="border: none; font-size: 19px; color: #454545dc;"></td>
+                                <td><input name="totalPrice" value="" readonly
+                                        style="border: none; font-size: 19px; color: #454545dc;"></td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
-                    <a href="{{#if currentUser}}/products{{else}}/login{{/if}}"><button
-                            class="btn btn-primary">Checkout</button></a>
+                    <button type="submit" class="btn btn-primary">
+                        {{#if currentUser}}Checkout{{else}}<a href="/login">Checkout</a>{{/if}}</button>
             </form>
         </div>
     </div>
 
     {{> footer}}
 
-    {{> importJS}} 
+    {{> importJS}}
+    <script src="/javascript/checkout.js"></script>
 </body>
 
 </html>

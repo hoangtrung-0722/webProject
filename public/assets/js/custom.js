@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   $(".navbar-toggler").click(function () {
     $(".navbar-collapse").slideToggle();
   });
@@ -75,17 +74,16 @@ $(document).ready(function () {
   });
 
   if (window.location.href.indexOf("shopping_cart") > -1) {
-
     getItemsFromCart();
     $('input[name="count"]').change(function () {
       const index = $(this).data("index");
       const newQuantity = $('input[name="count"]').eq(index).val();
       const price = parseFloat($(".price").eq(index).html().replace("$", ""));
       const name = $(".book-name").eq(index).html();
-      const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+      const cartItems = JSON.parse(localStorage.getItem("cartItems"));
       const currentItem = cartItems.find((item) => item.name == name);
       let bookPrice = 0;
-      let totalQuantity = 0
+      let totalQuantity = 0;
       $(".sum-price")
         .eq(index)
         .html("$" + (newQuantity * price).toFixed(2));
@@ -94,7 +92,9 @@ $(document).ready(function () {
         .html("$" + "");
       $("#cart-table tr").each(function (index) {
         if (index != 0) {
-          totalQuantity += parseInt($(this).find('td input[name="count"]').val());
+          totalQuantity += parseInt(
+            $(this).find('td input[name="count"]').val()
+          );
           bookPrice += parseFloat(
             $(this).find("td.sum-price").html().replace("$", "")
           );
@@ -102,18 +102,21 @@ $(document).ready(function () {
       });
       $('input[name="bookPrice"]').val(bookPrice.toFixed(2));
       currentItem.quantity = newQuantity;
-      localStorage.setItem('cartItems', JSON.stringify(cartItems));
-      localStorage.setItem('cartItemQuantity', JSON.stringify(updateCartItemQuantity()));
+      localStorage.setItem("cartItems", JSON.stringify(cartItems));
+      localStorage.setItem(
+        "cartItemQuantity",
+        JSON.stringify(updateCartItemQuantity())
+      );
     });
   } else {
     showCartItemQuantity();
   }
-
 });
 
 const getItemsFromCart = function () {
-  const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  let cartItems = JSON.parse(localStorage.getItem("cartItems"));
   let bookPriceTotal = 0;
+  cartItems = cartItems.filter((element) => element.quantity != 0);
   cartItems.forEach(function (element, index) {
     const serial = index + 1;
     $("#cart-table")
@@ -133,9 +136,13 @@ const getItemsFromCart = function () {
           element.price * element.quantity +
           "</td></tr>"
       );
+
     bookPriceTotal += element.price * element.quantity;
-    $('input[name="bookPrice"]').val(bookPriceTotal.toFixed(2));
   });
+  $('input[name="bookPrice"]').val(bookPriceTotal.toFixed(2));
+  const transportFee = parseFloat($('input[name="transportFee"]').val());
+  $('input[name="totalPrice"]').val((transportFee + bookPriceTotal).toFixed(2));
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
 
 const showCartItemQuantity = function () {
@@ -147,11 +154,10 @@ const showCartItemQuantity = function () {
 };
 
 const updateCartItemQuantity = function () {
-  const cartItems = JSON.parse(localStorage.getItem('cartItems'));
+  const cartItems = JSON.parse(localStorage.getItem("cartItems"));
   let total = 0;
-  cartItems.forEach(function(item) {
+  cartItems.forEach(function (item) {
     total += parseInt(item.quantity);
   });
-  console.log(total);
   return total;
-}
+};

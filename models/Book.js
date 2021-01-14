@@ -10,6 +10,8 @@ const bookSchema = new mongoose.Schema ({
     sale: {type: Number, default: 0},
     cover: String,
     description: String,
+    buys: Number,
+    views: Number,
     category: {type: mongoose.Types.ObjectId, ref: 'Category'}  
 });
 

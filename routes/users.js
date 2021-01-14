@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/profile', userController.profile);
 router.post('/profile', userController.profile);
-router.get('/edit_profile', userController.edit);
+router.get('/edit_profile', userController.openEdit);
 router.post('/edit_profile', userController.edit);
 
 
