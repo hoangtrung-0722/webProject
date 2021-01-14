@@ -8,12 +8,6 @@
 <body>
     {{> header active_products=true}}
 
-    {{!-- <div class="breadcrumb">
-        <div class="container">
-            <a class="breadcrumb-item" href="../../index">Home</a>
-            <span class="breadcrumb-item active">Product Details</span>
-        </div>
-    </div> --}}
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -24,11 +18,11 @@
     </div>
     <section class="product-sec">
         <div class="container">
-            <h1>{{book.name}}</h1>
+            <h1 id="book-name">{{book.name}}</h1>
             <div class="row">
                 <div class="col-md-6 slider-sec">
                     <!-- main slider carousel -->
-                    <div id="myCarousel" class="carousel slide" data-ride=carousel>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <!-- main slider carousel items -->
                         <div class="carousel-inner">
                             {{#each book.images}}
@@ -68,7 +62,11 @@
                         {{/if}}
                     </ul>
                     <div class="btn-sec">
+<<<<<<< HEAD
                         <button class="btn ">Add To cart</button>
+=======
+                        <button class="btn" id="btn-add-cart" data-button="{{book._id}}">Add To cart</button>
+>>>>>>> 6399014eb7940560f7ed0d70bfa77f69f62e19a8
                         <a href="{{#if currentUser}}/products/shopping_cart{{else}}/login{{/if}}" class="btn black">Buy
                             Now</a>
                     </div>

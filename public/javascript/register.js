@@ -1,5 +1,3 @@
-const { use } = require("../../routes/auth");
-
 $().ready(function () {
   let username_available = 0;
   const usernameRegex = new RegExp(

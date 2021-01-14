@@ -14,7 +14,11 @@ const bookSchema = new mongoose.Schema ({
     comments: [{
         user: String,
         body: String
-    }]
+    }],
+    buys: Number,
+    views: Number,
+    
+
 });
 
 bookSchema.virtual('sale-price').get(function() {

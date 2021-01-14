@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
-
-const bookService = require("../models/services/bookService");
-const categoryService = require("../models/services/categoryService");
 const User = require("../models/User");
+const bookService = require("../models/services/bookService");
 const Book = require("../models/Book");
+const categoryService = require("../models/services/categoryService");
+const Receipt = require('../models/Receipt');
+const mongoose= require("mongoose");
 
 const BOOKS_PER_PAGE = 12;
 
@@ -99,11 +99,15 @@ module.exports.products = async (req, res, next) => {
 };
 
 module.exports.detail = async (req, res) => {
+
   const book_id = req.params.id;
   const user = req.user;
   const body = req.body.comment;
 
   const book = await bookService.get(book_id);
+
+  await Book.updateOne({_id: mongoose.Types.ObjectId(book_id)}, {$inc: {views: 1}})
+
   const books_related = await bookService.related_list(
     book.category,
     book.name
@@ -140,3 +144,23 @@ module.exports.detail = async (req, res) => {
 module.exports.shopping_cart = (req, res) => {
   res.render("shopping_cart", { title: "Shopping cart" });
 };
+
+
+
+module.exports.checkout = async (req, res) => {
+  const receipt = new Receipt({
+    userId: req.user._id,
+    transportFee: req.body.transportFee,
+    totalPrice: req.body.totalPrice,
+    destination: req.body.address
+  });
+
+  let products = JSON.parse(req.body.products);
+  products = products.filter((item) => item.quantity != 0);
+  products.forEach(async (item) => {
+      delete item.name;
+  });
+  receipt.products = products;
+  await receipt.save();
+  res.redirect('back');
+}

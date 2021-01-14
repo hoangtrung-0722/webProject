@@ -17,4 +17,6 @@ router.post('/detail/:id', booksController.detail);
 
 router.get('/shopping_cart', booksController.shopping_cart);
 
+router.post('/checkout', booksController.checkout);
+
 module.exports = router;

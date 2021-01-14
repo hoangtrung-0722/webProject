@@ -22,7 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse align-items-center" id="navbarSupportedContent">
-                    <div class="navbar-nav mr-auto" >
+                    <div class="navbar-nav mr-auto">
                         <ul class="navbar-nav my-auto">
                             <li class="navbar-item {{#if active_home}}active{{/if}}">
                                 <a href="/index" class="nav-link">Home</a>
@@ -30,25 +30,17 @@
                             <li class="navbar-item {{#if active_products}}active{{/if}}">
                                 <a href="/products" class="nav-link">Products</a>
                             </li>
-                            {{!-- <li class="navbar-item dropdown {{#if active_products}}active{{/if}}">
-                                <a href="/products" class="nav-link dropdown-toggle-split"
-                                    data-toggle="dropdown">Products</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" class="dropdown-item">Category #1</a></li>
-                                    <li><a href="#" class="dropdown-item">Category #2</a></li>
-                                    <li><a href="#" class="dropdown-item">Category #3</a></li>
-                                </ul>
-                            </li> --}}
                             <li class="navbar-item {{#if active_about}}active{{/if}}">
-                                <a href="about.html" class="nav-link">About</a>
+                                <a href="#" class="nav-link">About</a>
                             </li>
                             <li class="navbar-item {{#if active_faq}}active{{/if}}">
-                                <a href="faq.html" class="nav-link">FAQ</a>
+                                <a href="#" class="nav-link">FAQ</a>
                             </li>
 
                         </ul>
                         <form class="form-inline d-flex align-items-center" action="/products">
-                            <input name="q" class="form-control" type="search" placeholder="Search here..." aria-label="Search">
+                            <input name="q" class="form-control" type="search" placeholder="Search here..."
+                                aria-label="Search">
                             <span class="fa fa-search text-secondary"></span>
                         </form>
                     </div>
@@ -56,7 +48,7 @@
                         <span>
                             <a href="/products/shopping_cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                         </span>
-                        {{!-- <span class="quantity">1</span> --}}
+                        <span class="quantity" style="display: none;">0</span>
                     </div>
                     {{#if currentUser}}
                     <div class="dropdown navbar-nav">
@@ -70,7 +62,8 @@
                                 <form class="dropdown-item" action="/logout" method="POST">
                                     <input type="submit" value="Logout">
                                 </form>
-                                {{!-- <a href="/logout" class="dropdown-item">Sign out</a></li> --}}
+                                {{!-- <a href="/logout" class="dropdown-item">Sign out</a>
+                            </li> --}}
                         </ul>
                     </div>
                     {{else}}

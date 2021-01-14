@@ -13,34 +13,40 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th colspan="3" style="text-align: center; font-size: 36px; font-weight: 600; background-color: #913f9e; color: #fff">
+                            <th colspan="3"
+                                style="text-align: center; font-size: 36px; font-weight: 600; background-color: #913f9e; color: #fff">
                                 My Profile
-                                </th>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row">1</th>
                             <td>Name</td>
-                            <td>{{name}}</td>
+                            <td>{{currentUser.name}}</td>
                         </tr>
                         <tr>
                             <th scope="row">2</th>
                             <td>Email</td>
-                            <td>{{email}}</td>
+                            <td>{{currentUser.email}}</td>
                         </tr>
                         <tr>
                             <th scope="row">3</th>
                             <td>Phone</td>
-                            <td>{{phone}}</td>
+                            <td>{{currentUser.phone}}</td>
                         </tr>
                         <tr>
                             <th scope="row">4</th>
                             <td>Address</td>
-                            <td>{{address}}</td>
+                            <td>{{currentUser.address}}</td>
                         </tr>
                     </tbody>
                 </table>
+                {{#or (not name) (not phone) (not address) (not email)}}
+                <div class="alert alert-danger" role="alert">
+                    You should fill in your information
+                </div>
+                {{/or}}
                 <a href="/users/edit_profile" class="btn btn-primary">Edit Profile</a>
             </div>
 
