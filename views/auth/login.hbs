@@ -20,8 +20,10 @@
                 except _ and . (no _ or . at the beginning, or the end)</p>
             <p><span class="field-name">Password</span> must have more than 6 characters, contain at least 1 uppercase
                 character, 1 lowercase character and 1 number</p>
-            {{#if message}}
-            <p class="text-error">{{message}}</p>
+            {{#if error}}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
             {{/if}}
             <div class="form">
                 <form method="POST" action='/login' id="login-form">

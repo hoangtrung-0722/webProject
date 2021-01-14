@@ -10,9 +10,9 @@ router.get("/login", authController.openLogin);
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/back",
     failureRedirect: "/login",
-    failureFlash: "Password or username is incorrect",
+    failureFlash: true,
   }),
   function (res, req) {
     res.redirect("/");
