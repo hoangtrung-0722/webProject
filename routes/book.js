@@ -13,6 +13,7 @@ router.get('/', booksController.products);
 //router.get('/:page', bookController.index);
 
 router.get('/detail/:id', booksController.detail);
+router.post('/detail/:id', booksController.detail);
 
 router.get('/shopping_cart', booksController.shopping_cart);
 

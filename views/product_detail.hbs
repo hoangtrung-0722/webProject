@@ -69,7 +69,8 @@
                     </ul>
                     <div class="btn-sec">
                         <button class="btn ">Add To cart</button>
-                        <a href="{{#if currentUser}}/products/shopping_cart{{else}}/login{{/if}}" class="btn black">Buy Now</a>
+                        <a href="{{#if currentUser}}/products/shopping_cart{{else}}/login{{/if}}" class="btn black">Buy
+                            Now</a>
                     </div>
                 </div>
             </div>
@@ -103,6 +104,31 @@
             </div>
         </div>
     </section>
+    <div class="container">
+
+        <div class="form-floating">
+            {{#if currentUser}}
+            <form action="" method="POST" style="margin-bottom: 50px;">
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                    style="height: 100px" name="comment"></textarea>
+                <button class="btn btn-primary" style="float: right;">Comment</button>
+            </form>
+
+            {{/if}}
+            <label for="floatingTextarea2" style="font-weight: 500; font-size: 26px;">Comments</label>
+        </div>
+        {{#each book.comments}}
+        <div style="margin-bottom: 20px;">
+
+            <div>
+                <div>{{user}}</div>
+            </div>
+            <div style="border: 1px solid #2121214b; padding: 10px">{{body}}</div>
+
+        </div>
+        {{/each}}
+    </div>
+
 
     {{> footer}}
 
