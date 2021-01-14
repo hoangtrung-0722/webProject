@@ -10,7 +10,7 @@ const bookSchema = new mongoose.Schema ({
     sale: {type: Number, default: 0},
     cover: String,
     description: String,
-    category: ObjectId,  
+    category: {type: mongoose.Types.ObjectId, ref: 'Category'}  
 });
 
 bookSchema.virtual('sale-price').get(function() {

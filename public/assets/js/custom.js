@@ -7,13 +7,11 @@ $(document).ready(function () {
 
      $("#owl-demo").owlCarousel({
           navigation: false, // hide next and prev buttons
-          slideSpeed: 300,
+          slideSpeed: 500,
           singleItem: true,
           items: 1,
           autoPlay: 5000,
           loop: true,
-
-
      });
 
      $("#myCarousel") > $(".list-inline-item").each(function(index) {

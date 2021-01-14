@@ -16,21 +16,27 @@
     <section class="static about-sec">
         <div class="container">
             <h1>My Account / REgister</h1>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and scrambled it to make a type specimen book. It has survived not only fiveLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem </p>
+            <p><span class="field-name">Username</span> is 8-20 characters long, not contain any special character
+                except _ and . (no _ or . at the beginning, or the end)</p>
+            <p><span class="field-name">Password</span> must have more than 6 characters, contain at least 1 uppercase
+                character, 1 lowercase character and 1 number</p>
             <p class="text-danger" id="error-msg"></p>
             <div class="form">
                 <form method="POST" action="/register" id="register-form">
                     <div class="form">
                         <div>
-                            <input name="username" placeholder="Enter User Name" required pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$">
+                            <input name="username" placeholder="Enter User Name" required autocomplete="off"
+                                pattern="^(?=.{8,20}$)(?![_.])[a-zA-Z0-9._]+(?<![_.])$">
                             <span class="required-star">*</span>
                         </div>
                         <div>
-                            <input name="password" type="password" placeholder="Password" required minlength="6">
+                            <input name="password" type="password" placeholder="Password" autocomplete="off" required
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$">
                             <span class="required-star">*</span>
                         </div>
                         <div>
-                            <input name="repeat-password" type="password" placeholder="Repeat Password" required minlength="6">
+                            <input name="repeat-password" type="password" placeholder="Repeat Password"
+                                autocomplete="off" required minlength="6">
                             <span class="required-star">*</span>
                         </div>
                         <div class="col-lg-8 col-md-12">
@@ -45,6 +51,7 @@
     {{> footer}}
 
     {{> importJS}}
+    <script src="/javascript/validate.js"></script>
 </body>
 
 </html>

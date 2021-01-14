@@ -12,6 +12,7 @@ const mathHelpers = require('handlebars-helpers')({handlebars: hbs}, ['math', 'n
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
+const flash = require('connect-flash');
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
@@ -39,6 +40,7 @@ app.use(session({
   store: new MongoStore({ url: process.env.DB_URI })
 }));
 
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
