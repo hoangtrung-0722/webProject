@@ -4,8 +4,10 @@ const User = require("../models/User");
 
 module.exports.profile = (req, res) => {
   const user = req.user;
+  console.log(user);
 
   res.render("profile", {
+    title: user.username + "'s profile",
     name: user.name,
     email: user.email,
     phone: user.phone,

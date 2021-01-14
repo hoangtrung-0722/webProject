@@ -13,9 +13,10 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th colspan="3" style="text-align: center; font-size: 36px; font-weight: 600; background-color: #913f9e; color: #fff">
+                            <th colspan="3"
+                                style="text-align: center; font-size: 36px; font-weight: 600; background-color: #913f9e; color: #fff">
                                 My Profile
-                                </th>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,11 @@
                         </tr>
                     </tbody>
                 </table>
+                {{#or (not name) (not phone) (not address) (not email)}}
+                <div class="alert alert-danger" role="alert">
+                    You should fill in your information
+                </div>
+                {{/or}}
                 <a href="/users/edit_profile" class="btn btn-primary">Edit Profile</a>
             </div>
 

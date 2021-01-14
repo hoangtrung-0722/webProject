@@ -10,7 +10,7 @@ router.get("/login", authController.openLogin);
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "/back",
+    successRedirect: "/",
     failureRedirect: "/login",
     failureFlash: true,
   }),
