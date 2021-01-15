@@ -114,7 +114,7 @@ module.exports.detail = async (req, res) => {
   );
 
   const comment = {};
-  comment.user = user.username;
+  comment.user = user != undefined ? user.username : 'Guest';
   comment.body = body;
 
   if (body != undefined) {

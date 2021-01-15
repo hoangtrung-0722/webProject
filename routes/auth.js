@@ -12,7 +12,7 @@ router.post(
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
-    failureFlash: true,
+    failureFlash: "Password or Username is incorrect",
   }),
   function (res, req) {
     res.redirect("/");

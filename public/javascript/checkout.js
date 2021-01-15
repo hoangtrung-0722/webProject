@@ -9,5 +9,7 @@ $().ready(function () {
     const cartItems = localStorage.getItem('cartItems');
     const input = $("<input />").attr("type", "hidden").attr("name", "products").attr("value", cartItems);
     $('#billForm').append(input);
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('cartItemQuantity');
   });
 });

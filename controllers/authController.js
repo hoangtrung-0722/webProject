@@ -1,7 +1,9 @@
 const User = require("../models/User");
 
 module.exports.openLogin = async (req, res, next) => {
-  console.log(req.flash("error")[0]);
+  if (req.isAuthenticated()) {
+    res.redirect('back');
+  }
   res.render("auth/login", { title: "Login", error: req.flash("error")[0] });
 };
 
@@ -40,7 +42,8 @@ module.exports.registerUser = async (req, res, next) => {
               req.flash("error", err.message);
               res.redirect("/register");
             } else {
-              res.redirect("/login");
+              req.logIn();
+              res.redirect("/users/edit_profile");
             }
           }
         );

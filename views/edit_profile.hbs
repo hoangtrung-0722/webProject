@@ -9,7 +9,9 @@
     {{> header active_products=true}}
 
     <div class="container" style="margin-bottom: 50px;">
-
+        <div class="alert alert-info" role="alert">
+            Please provide correct information
+        </div>
         <form action="" method="POST">
             <div class="row">
                 <div class="col-2">
@@ -19,10 +21,10 @@
                     <div class="label-profile">Address:</div>
                 </div>
                 <div class="col-10">
-                    <div><input class="input-profile" name="name" type="text" value="{{currentUser.name}}"></div>
+                    <div><input class="input-profile" name="name" type="text" value="{{currentUser.name}}" required></div>
                     <div><input class="input-profile" name="email" type="text" value="{{currentUser.email}}"></div>
                     <div><input class="input-profile" name="phone" type="text" value="{{currentUser.phone}}"></div>
-                    <div><input class="input-profile" name="address" type="text" value="{{currentUser.address}}"></div>
+                    <div><input class="input-profile" name="address" type="text" value="{{currentUser.address}}" required></div>
                 </div>
             </div>
             <a href="/users/profile" class="btn" style="background-color: rgb(199, 0, 0); border: none;">Cancel</a>

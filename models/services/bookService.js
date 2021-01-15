@@ -115,7 +115,7 @@ exports.get = async (id) => {
 }
 
 exports.get_recommended = async (books_per_page) => {
-    const books = await Book.find({}).limit(books_per_page);
+    const books = await Book.find(FILTER).sort({views: 'desc'}).limit(books_per_page);
 
     return books;
 }

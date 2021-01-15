@@ -42,7 +42,7 @@
                         </tr>
                     </tbody>
                 </table>
-                {{#or (not name) (not phone) (not address) (not email)}}
+                {{#or (not currentUser.name) (not currentUser.phone) (not currentUser.address) (not currentUser.email)}}
                 <div class="alert alert-danger" role="alert">
                     You should fill in your information
                 </div>

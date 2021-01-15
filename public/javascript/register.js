@@ -77,6 +77,8 @@ $().ready(function () {
       password.siblings("p").remove();
       const value = password.val();
       if (value == "") {
+        password.siblings("p").remove();
+        password.parent().removeClass();
         return;
       } else if (!value.match("^(?=.*[a-z])(?=.*[A-Z])(?=.*d).{6,}$")) {
         password.parent().addClass("form-error");
